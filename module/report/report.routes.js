@@ -6,10 +6,8 @@ import { getReport, getReports } from "./controller/getReports.controller.js";
 
 export const reportRoutes = Router();
 
-reportRoutes.post("/", authMiddleware, requireRole("admin"), addReports);
+reportRoutes.post("/", requireRole("admin"), addReports);
 
-reportRoutes.get("/", authMiddleware, requireRole("any"), getReports);
+reportRoutes.get("/", requireRole("any"), getReports);
 
-reportRoutes.get("/:id", authMiddleware, requireRole("any"), getReport);
-
-
+reportRoutes.get("/:id", requireRole("any"), getReport);

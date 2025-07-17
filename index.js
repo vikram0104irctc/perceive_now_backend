@@ -23,7 +23,7 @@ app.get("health", (req, res) => {
   });
 });
 
-app.use("/api", routes);
+app.use("/", routes);
 
 const port = process.env.port;
 

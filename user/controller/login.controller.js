@@ -35,15 +35,22 @@ export const login = async (req, res) => {
         error: "",
       });
     }
+    const expireTime = Date.now() + 24 * 60 * 60 * 1000;
 
     const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET_KEY, {
       expiresIn: "1d",
     });
 
+    user.loginHandler.lastLogin = new Date();
+    user.loginHandler.lastLoginDeviceIp = req.ip;
+    user.loginHandler.lastLoginToken = `Bearer ${token}`;
+    await user.save();
+
     return res.status(200).json({
       success: true,
       message: "User logged in successfully.",
       authorization: `Bearer ${token}`,
+      expireTime,
       user: {
         id: user._id,
         name: user.firstName,

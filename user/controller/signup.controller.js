@@ -4,7 +4,7 @@ import validator from "validator";
 
 // Validation constants
 const MIN_PASSWORD_LENGTH = 8;
-const VALID_ROLES = ["user", "admin", "moderator"]; // Adjust based on your needs
+const VALID_ROLES = ["reviewer", "admin", "reviewer"]; // Adjust based on your needs
 const MOBILE_REGEX = /^[0-9]{10}$/; // Basic 10-digit mobile validation
 const ADMIN_ROLE = "admin";
 

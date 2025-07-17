@@ -1,10 +1,8 @@
 import { Router } from "express";
 import { requireRole } from "../../middleware/requireRole.js";
-import { authMiddleware } from "../../middleware/authMiddleware.js";
+import { addFeedback } from "./controller/addFeedback.controller.js";
 
-export const reportRoutes = Router();
+export const feedbackRoutes = Router();
 
-reportRoutes.post("/add-feedback", authMiddleware, requireRole("admin"), addReports);
-
-reportRoutes.get("/get-reports", authMiddleware, requireRole("any"), getReports);
+feedbackRoutes.post("/", requireRole("admin"), addFeedback);
 

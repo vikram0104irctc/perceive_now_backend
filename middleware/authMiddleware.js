@@ -26,6 +26,14 @@ export const authMiddleware = async (req, res, next) => {
       });
     }
 
+    if (user.loginHandler.lastLoginToken !== authHeader) {
+      return res.status(403).json({
+        success: false,
+        message: "Access denied: authorization mismatch.",
+        error: "",
+      });
+    }
+
     req.user = user; // attach user to request object
     next();
   } catch (error) {
