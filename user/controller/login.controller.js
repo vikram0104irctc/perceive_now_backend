@@ -49,7 +49,7 @@ export const login = async (req, res) => {
     return res.status(200).json({
       success: true,
       message: "User logged in successfully.",
-      authorization: `Bearer ${token}`,
+      accessToken: `Bearer ${token}`,
       expireTime,
       user: {
         id: user._id,

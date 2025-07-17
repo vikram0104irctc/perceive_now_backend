@@ -25,7 +25,7 @@ app.get("health", (req, res) => {
 
 app.use("/", routes);
 
-const port = process.env.port;
+const port = process.env.PORT;
 
 async function startApplication() {
   try {
